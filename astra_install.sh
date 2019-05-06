@@ -5,3 +5,5 @@ sh autogen.sh
 sh configure --with-cuda=/usr/local/cuda \
             --with-python=python \
             --with-install-type=module
+make
+make install
