@@ -3,3 +3,6 @@ jupyter
 pylint
 tqdm
 matplotlib
+tensorflow
+scikit-image
+tensorboard
