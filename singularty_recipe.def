@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: ubuntu:16.04
+
+%help
+  Need help
+
+
+%labels
+  Maintainer Zaccharie Ramzi <zaccharie.ramzi@cea.fr>
+
+%runscript
+  echo "Executing command in singularity container using Python3..."
+  exec python3 "$@"
+
+%files
+  requirements.txt requirements.txt
+
+%post
+  mkdir /scratch
+  mv requirements.txt /scratch/
+  cd /scratch
+  apt-get update -y
+  apt-get install python3-pip -y
+  # astra toolbox install reqs
+  pip3 install numpy cython six scipy
+  apt-get install build-essential libtool autoconf automake libboost-dev git -y
+  git clone https://github.com/astra-toolbox/astra-toolbox.git
+  cd astra-toolbox/build/linux
+  sh autogen.sh
+  sh configure --with-cuda=/usr/local/cuda \
+              --with-python=python3 \
+              --with-install-type=module
+  make
+  make install
+  cd /scratch
+  ## learned primal dual reqs
+  pip3 install -r requirements.txt
