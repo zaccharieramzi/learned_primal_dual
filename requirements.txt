@@ -6,3 +6,4 @@ matplotlib
 tensorflow
 scikit-image
 tensorboard
+https://github.com/adler-j/adler/archive/master.zip
