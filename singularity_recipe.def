@@ -14,10 +14,12 @@ From: ubuntu:16.04
 
 %files
   requirements.txt requirements.txt
+  learned_primal_ellipses.py learned_primal_ellipses.py
 
 %post
   mkdir /scratch
   mv requirements.txt /scratch/
+  mv learned_primal_ellipses.py /scratch/
   cd /scratch
   apt-get update -y
   apt-get install python3-pip -y
