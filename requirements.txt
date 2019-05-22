@@ -6,3 +6,4 @@ matplotlib
 tensorflow
 scikit-image
 tensorboard
+cython
